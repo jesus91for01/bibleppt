@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bible PPT Maker</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="sql-asm.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.js"></script>
     
     <script>
         window._prevModule = window.module;
@@ -386,7 +386,11 @@
     async function autoLoadAllDatabases() {
         initBookMappings();
         if (!sqlJsObject) {
-            try { sqlJsObject = await initSqlJs({ locateFile: file => file }); } 
+            try { 
+                sqlJsObject = await window.initSqlJs({ 
+                    locateFile: file => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/${file}` 
+                }); 
+            } 
             catch(e) { alert("데이터베이스 엔진 초기화에 실패했습니다.\n" + e.message); return; }
         }
 
