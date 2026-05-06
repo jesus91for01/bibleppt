@@ -446,8 +446,14 @@
     DOM.dbFileInput.addEventListener('change', async (e) => {
         const files = Array.from(e.target.files);
         if (!files.length) return;
+        
+        // 사이드바에서 DB 추가 시 로딩 UI 표시
         DOM.manualLoadContainer.classList.add('hidden');
+        DOM.loadingOverlay.classList.remove('hidden');
+        DOM.loadingSpinner.classList.remove('hidden');
         DOM.loadingText.classList.remove('hidden');
+        DOM.loadingText.innerText = "DB 파일 처리 중...";
+
         let unloaded = Object.keys(VERSION_INFO).filter(vid => !dbs[vid]);
         
         for (const file of files) {
@@ -463,6 +469,8 @@
                 } catch(err) {}
             }
         }
+        
+        e.target.value = ''; // 동일 파일 재선택 가능하도록 초기화
         finishSetupProcess();
     });
 
