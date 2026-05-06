@@ -693,7 +693,7 @@
         const slideHtml = `
             <div id="ppt-scale-wrapper" class="absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none">
                 <div id="current-ppt-slide" class="shadow-2xl relative pointer-events-auto" style="width: 1280px; height: 720px; background-color: ${pptSettings.bgColor}; ${bgImgStyle} color: ${pptSettings.textColor}; font-family: ${pptSettings.fontFamily}; font-size: ${pptSettings.bodyFontSize}px; line-height: ${pptSettings.lineHeight}; flex-shrink: 0; transform-origin: center center;">
-                    <div id="ppt-slide-address" contenteditable="true" style="position: absolute; top: 8%; right: 6%; font-size: ${pptSettings.addressFontSize}px; opacity: 0.85; text-align: right; z-index: 10; font-weight: bold; outline: none; border-bottom: 1px dashed transparent; padding: 2px 5px;" onfocus="this.style.borderColor='rgba(255,255,255,0.5)'" onblur="this.style.borderColor='transparent'">
+                    <div id="ppt-slide-address" contenteditable="true" style="position: absolute; top: 8%; left: 0; width: 100%; font-size: ${pptSettings.addressFontSize}px; opacity: 0.85; text-align: center; z-index: 10; font-weight: bold; outline: none; border-bottom: 1px dashed transparent; padding: 2px 5px;" onfocus="this.style.borderColor='rgba(255,255,255,0.5)'" onblur="this.style.borderColor='transparent'">
                         ${addressText}
                     </div>
                     <div style="position: absolute; top: 15%; bottom: 10%; left: 8%; right: 8%; display: flex; flex-direction: column; justify-content: center;">
@@ -843,7 +843,7 @@
                 
                 if (slide.addressText) {
                     s.addText(slide.addressText, {
-                        x: '50%', y: '8%', w: '44%', h: '10%', align: 'right', valign: 'top',
+                        x: '0%', y: '8%', w: '100%', h: '10%', align: 'center', valign: 'top',
                         color: slide.textColor.replace('#', ''),
                         fontFace: slide.fontFamily.replace(/['"]/g, '').split(',')[0].trim(),
                         fontSize: Math.round(slide.addressFontSize * 0.75),
